@@ -11,24 +11,40 @@ function count(name, price, isTrue) {
             inputValue.value = parseInt(inputValue.value) - 1;
         }
     }
-    const newNumer = inputValue.value;
-    const singleprice = document.getElementById(name + '-price');
-    console.log(singleprice)
-    singleprice.innerText = price * newNumer;
+    const newNumber = inputValue.value;
+    const singlePrice = document.getElementById(name + '-price');
+    console.log(singlePrice)
+    singlePrice.innerText = price * newNumber;
+    calculation();
 
 }
 //camera price 
-document.getElementById('camara-plus').addEventListener('click', function() {
-    count('camara', 1588, true)
+document.getElementById('camera-plus').addEventListener('click', function () {
+    count('camera', 1588, true)
 });
-document.getElementById('camara-minus').addEventListener('click', function() {
-    count('camara', 1588, false)
+document.getElementById('camera-minus').addEventListener('click', function () {
+    count('camera', 1588, false)
 });
 
 //lance price 
-document.getElementById('lance-plus').addEventListener('click', function() {
+document.getElementById('lance-plus').addEventListener('click', function () {
     count('lance', 150, true)
 });
-document.getElementById('lance-minus').addEventListener('click', function() {
+document.getElementById('lance-minus').addEventListener('click', function () {
     count('lance', 150, false)
 });
+
+// total ,subtotal and tax calculation
+
+function calculation() {
+    const subTotal = document.getElementById('subtotal-price');
+    const lancePrice = document.getElementById('lance-price').innerText;
+    const cameraPrice = document.getElementById('camera-price').innerText;
+    subTotal.innerText = Number(lancePrice) + Number(cameraPrice);
+    // tax rating 
+    const tax = document.getElementById('tax-price');
+    tax.innerText = parseInt(subTotal.innerText / 10);
+    // total calculation
+    const total = document.getElementById('total-price');
+    total.innerText = Number(subTotal.innerText) + Number(tax.innerText);
+}
