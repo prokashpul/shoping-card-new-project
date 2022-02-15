@@ -5,7 +5,9 @@ function count(name, price, isTrue) {
 
     const inputValue = document.getElementById(name + '-input');
     if (isTrue == true) {
-        inputValue.value = parseInt(inputValue.value) + 1;
+        if (inputValue.value > 0) {
+            inputValue.value = parseInt(inputValue.value) + 1;
+        }
     } else {
         if (inputValue.value > 0) {
             inputValue.value = parseInt(inputValue.value) - 1;
